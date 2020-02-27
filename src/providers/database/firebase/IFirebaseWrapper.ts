@@ -4,7 +4,7 @@ import { firebase } from 'firebase';
 
 export interface IFirebaseWrapper {
   init(firebaseConfig: {}, options: RAFirebaseOptions): void;
-  db(): firestore.Firestore;
+  db(): firebase.Firebase;
   storage(): firebase.storage.Storage;
   auth(): FirebaseAuth;
   serverTimestamp(): any;
