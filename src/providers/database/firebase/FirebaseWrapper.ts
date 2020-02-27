@@ -2,25 +2,25 @@ import { IFirebaseWrapper } from "./IFirebaseWrapper";
 import { RAFirebaseOptions } from "providers/RAFirebaseOptions";
 
 import * as firebase from "firebase/app";
-import "firebase/firestore";
+import "firebase/firebase";
 import "firebase/auth";
 import "firebase/storage";
 
 export class FirebaseWrapper implements IFirebaseWrapper {
-  private firestore: firebase.firestore.Firestore;
+  private firebase: firebase.firebase.Firebase;
   private app;
 
   constructor() { }
 
   public init(firebaseConfig: {}, options: RAFirebaseOptions): void {
     this.app = ObtainFirebaseApp(firebaseConfig, options) as any;
-    this.firestore = this.app.firestore();
+    this.firebase = this.app.firebase();
   }
-  public db(): firebase.firestore.Firestore {
-    return this.firestore;
+  public db(): firebase.firebase.Firebase {
+    return this.firebase;
   }
   public serverTimestamp() {
-    return firebase.firestore.FieldValue.serverTimestamp();
+    return firebase.firebase.FieldValue.serverTimestamp();
   }
   public auth() {
     return this.app.auth();
